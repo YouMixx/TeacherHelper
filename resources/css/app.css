@@ -1,0 +1,50 @@
+body {
+    background-color: white;
+}
+
+.language-switch {
+    cursor: pointer;
+
+}
+
+.span-reset {
+    cursor: pointer;
+}
+
+.nav-link {
+    color: white
+}
+
+.nav-link:hover {
+    color: gray
+}
+
+.language-switch {
+    filter: invert(100%);
+}
+
+.unselectable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                    not supported by any browser */
+}
+
+.translate__content {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.word-show {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 1.8em;
+    height: 50px;
+}
+
+.word-hide {
+    height: 50px;
+    font-size: 1.4em;
+}
