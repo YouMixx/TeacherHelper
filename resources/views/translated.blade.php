@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <translated-words :words="{{ $collection }}" />
+    <translated-words :words="{{ $collection }}"/>
 </div>
 @endsection

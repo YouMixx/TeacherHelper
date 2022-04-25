@@ -25,6 +25,8 @@ Route::get('/load', function () {
 Route::post('/load', [MainController::class, 'loadFile'])->name('load_file');
 
 Route::get('/wordbooks', [MainController::class, 'showWordBooks']);
+Route::get('/words-list', [MainController::class, 'showAllBooks']);
 
 Route::get('/translated/{id}', [MainController::class, 'showBooks'])->name('show_books');
 Route::get('/clear-books', [MainController::class, 'clearBooks']);
+

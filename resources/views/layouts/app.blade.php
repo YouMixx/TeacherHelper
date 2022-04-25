@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script> 
+    <script src="{{ asset('js/speech-api.js') }}" defer></script> 
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -37,6 +38,7 @@
                 <div class="col-xl-4 col-8 order-2 d-flex justify-content-end align-items-center">
                     <a href="{{ url('wordbooks') }}" class="nav-link">Выбрать словарь</a>
                     <a href="{{ url('load') }}" class="nav-link">Загрузить словарь</a>
+                    <a href="{{ url('words-list') }}" class="nav-link">Словарь</a>
                 </div>
             </div>
         </header>

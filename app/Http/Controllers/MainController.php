@@ -69,6 +69,7 @@ class MainController extends Controller
             'date_created' => Carbon::now()->toDateTimeString(),
         ]);
         session()->push('books_collections', $collection);
+        session()->push('words_list', $words['ENG']);
         session()->save();
 
         // return view('translated', compact('collection'));
@@ -85,16 +86,32 @@ class MainController extends Controller
     public function showBooks($id)
     {
         $collection = session('books_collections');
-        if(!array_key_exists($id, $collection)) {
-            return redirect()->back();
+        if($collection == null || !array_key_exists($id, $collection)) {
+            return redirect('wordbooks');
         }
         $collection = $collection[$id];
         return view('translated', compact('collection'));
     }
+
+    public function showAllBooks()
+    {
+        $books = session('words_list');
+        $result = [];
+        foreach($books as $words) {
+            foreach($words as $word) {
+                if(!in_array($word, $result)) array_push($result, $word);
+            }
+        }
+        $words = json_encode($result);
+        // dd($words);
+        return view('words-list', compact('words'));
+    }
+
     public function clearBooks()
     {
         session()->forget('books_names');
         session()->forget('books_collections');
+        session()->forget('words_list');
         // session()->push('books_names', 'Имя');
         session()->save();
         return redirect('wordbooks');

@@ -23,6 +23,14 @@ body {
     filter: invert(100%);
 }
 
+.language-switch span {
+    width: 62px;
+}
+
+.btn-speak img {
+    width: 24px;
+}
+
 .unselectable {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Chrome/Safari/Opera */

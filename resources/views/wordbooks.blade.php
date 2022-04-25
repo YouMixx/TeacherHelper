@@ -8,7 +8,7 @@
             @foreach($books_names as $book)
                     <div class="col-4">
                         <a href="/translated/{{ $loop->index }}" class="text-decoration-none text-reset">
-                            <div class="shadow rounded text-reset p-2 d-flex flex-column">
+                            <div class="shadow rounded text-reset p-2 px-3 d-flex flex-column">
                                 <h4 class="m-0">{{ $book['name'] }}</h4>
                                 <span>Количество слов: {{ $book['count'] }}</span>
                                 <span>Дата создания: {{ $book['date_created'] }}</span>
@@ -17,7 +17,7 @@
                     </div>
             @endforeach
             <a href="/clear-books" class="text-decoration-none text-reset text-center mt-4">Удалить все словари</a>
-        @else  
+        @else
             <p>У вас пока-что нет словарей :(</p>
         @endif
     </div>
