@@ -22,7 +22,7 @@
                 <div class="mb-3 {{ $errors->has('csv_file') ? ' has-error' : '' }}">
                     <div class="col-md-12">
                         <label for="csv_file">Выберите и загрузите файл CSV формата</label>
-                        <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+                        <input id="csv_file" type="file" class="form-control" name="csv_file" required accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
 
                         @if ($errors->has('csv_file'))
                             <span class="help-block">

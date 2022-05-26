@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row gx-2 gy-2">
        <h1>Ваши словари:</h1>
-       @if(!empty($books_names))
-            @foreach($books_names as $book)
+       @if(!empty($books))
+            @foreach($books as $book)
                     <div class="col-4">
                         <a href="/translated/{{ $loop->index }}" class="text-decoration-none text-reset">
                             <div class="shadow rounded text-reset p-2 px-3 d-flex flex-column">

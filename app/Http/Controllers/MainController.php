@@ -5,23 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImportRequest;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
 class MainController extends Controller
 {
-    public function loadFile(ImportRequest $request)
-    {  
-        // session()->forget('books_names');
-        // session()->push('books_names', 'Имя');
-        // session()->save();
+    public function index()
+    {
+        return view('layouts.app');
+    }
 
-        // $nb = 'Test title';
-        // session()->push('books_names_test', [
-        //     'name' => $nb,
-        //     'count' => 5,
-        //     'date_created' => '2017-12-23',
-        // ]);
-        // $array = session('books_names_test');
+    public function loadFile(Request $request)
+    {  
         // $key = array_search('Test title', array_column($array, 'name'));
         // dd($key);
         // return;
@@ -33,18 +28,22 @@ class MainController extends Controller
         */
 
         // Проверка имени букваря на занятность (локально у пользователя)
-        $nb = $request->name_books;
-        $session_books = session('books_names');
-
+        $nb = $request->name_book;
+        $session_books = session('books');
+        
         if($session_books != null) {
             $key = array_search($nb, array_column($session_books, 'name'));
             if($key !== false) {
-                return redirect()->back()->withErrors(['name_books' => 'Ошибка! Словарь с данным именем уже существует']);
+                // return redirect()->back()->withErrors(['name_books' => 'Ошибка! Словарь с данным именем уже существует']);
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Ошибка! Словарь с данным именем уже существует',
+                ]);
             }
         }
 
         // Обработка файла
-        $path = $request->file('csv_file')->getRealPath();
+        $path = $request->file->getRealPath();
         $data = file($path);
 
         $data = array_map(function ($elem) {
@@ -62,58 +61,58 @@ class MainController extends Controller
         $collection->put($data[0][0], $words[$data[0][0]]);
         $collection->put($data[0][1], $words[$data[0][1]]);
 
-        // session()->push('books_names', $nb);
-        session()->push('books_names', [
+        session()->push('books', [
             'name' => $nb,
             'count' => count($collection->get($data[0][0])),
+            'words' => $collection,
             'date_created' => Carbon::now()->toDateTimeString(),
         ]);
-        session()->push('books_collections', $collection);
-        session()->push('words_list', $words['ENG']);
         session()->save();
 
-        // return view('translated', compact('collection'));
-        return redirect('wordbooks');
+        return response()->json([
+            'status' => true,
+        ]);
     }
 
     public function showWordBooks()
     {
-        $books_names = session('books_names');
-        // dd($books_names[0]['name']);
-        return view('wordbooks', compact('books_names'));
+        $books = session('books');
+        return response()->json([
+            'status' => true,
+            'books' => $books,
+        ]); 
+
+        // $books = session('books');
+        // return view('wordbooks', compact('books'));
     }
 
     public function showBooks($id)
     {
-        $collection = session('books_collections');
+        $collection = session('books');
         if($collection == null || !array_key_exists($id, $collection)) {
             return redirect('wordbooks');
         }
-        $collection = $collection[$id];
-        return view('translated', compact('collection'));
+        $collection = $collection[$id]['words'];
+        return response()->json([
+            'status' => true,
+            'words' => $collection,
+        ]); 
+        // return view('translated', compact('collection'));
     }
 
-    public function showAllBooks()
-    {
-        $books = session('words_list');
-        $result = [];
-        foreach($books as $words) {
-            foreach($words as $word) {
-                if(!in_array($word, $result)) array_push($result, $word);
-            }
-        }
-        $words = json_encode($result);
-        // dd($words);
-        return view('words-list', compact('words'));
-    }
+    // public function showAllWords()
+    // {
+    //     $books = session('books');
+    //     $books = json_encode($books);
+    //     return view('words-list', compact('books'));
+    // }
 
     public function clearBooks()
     {
-        session()->forget('books_names');
-        session()->forget('books_collections');
-        session()->forget('words_list');
-        // session()->push('books_names', 'Имя');
+        session()->forget('books');
         session()->save();
-        return redirect('wordbooks');
+        return response()->json([
+            'status' => true,
+        ]); 
     }
 }

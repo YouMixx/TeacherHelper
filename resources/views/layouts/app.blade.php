@@ -19,33 +19,7 @@
 </head>
 <body>
     <div id="app">
-        <header class="d-flex flex-wrap justify-content-center py-2 mb-4 border-bottom bg-black p-4 unselectable">
-            <div class="row justify-content-between align-items-center w-100">
-                <div class="col-xl-4 col-4 pt-1">
-                    <a href="/" class="d-flex align-items-center mb-md-0 me-md-auto text-decoration-none text-white">
-                        <span class="fs-4">{{ config('app.name', 'Laravel') }}</span>
-                    </a>
-                </div>
-                @if(Route::current()->getName() == 'show_books')
-                <div class="col-xl-4 col-12 order-xl-2 order-3">
-                    <div class="language-switch d-flex justify-content-center align-items-center" >
-                        <span id="first">ENGLISH</span>
-                        <img src="{{URL::asset('/images/swap.png')}}" alt="" class="mx-3">
-                        <span id="second">RUSSIAN</span>
-                    </div>
-                </div>
-                @endif
-                <div class="col-xl-4 col-8 order-2 d-flex justify-content-end align-items-center">
-                    <a href="{{ url('wordbooks') }}" class="nav-link">Выбрать словарь</a>
-                    <a href="{{ url('load') }}" class="nav-link">Загрузить словарь</a>
-                    <a href="{{ url('words-list') }}" class="nav-link">Словарь</a>
-                </div>
-            </div>
-        </header>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <router-view></router-view>
     </div>
 </body>
 </html>

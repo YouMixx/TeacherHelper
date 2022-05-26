@@ -14,19 +14,26 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [MainController::class, 'index']);
+Route::get('/{any}', [MainController::class, 'index'])->where('any', '.*');
 
-Route::get('/load', function () {
-    return view('loader');
-});
+Route::post('/load-file', [MainController::class, 'loadFile']);
+Route::post('/get-wordbooks', [MainController::class, 'showWordBooks']);
+Route::post('/get-wordbook/{id}', [MainController::class, 'showBooks']);
+
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+// Route::get('/load', function () {
+//     return view('loader');
+// });
 
 Route::post('/load', [MainController::class, 'loadFile'])->name('load_file');
 
-Route::get('/wordbooks', [MainController::class, 'showWordBooks']);
-Route::get('/words-list', [MainController::class, 'showAllBooks']);
+// Route::get('/wordbooks', [MainController::class, 'showWordBooks']);
+// Route::get('/words-list', [MainController::class, 'showAllWords']);
 
-Route::get('/translated/{id}', [MainController::class, 'showBooks'])->name('show_books');
-Route::get('/clear-books', [MainController::class, 'clearBooks']);
+// Route::get('/translated/{id}', [MainController::class, 'showBooks'])->name('show_books');
+Route::post('/clear-books', [MainController::class, 'clearBooks']);
 

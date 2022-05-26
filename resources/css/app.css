@@ -7,17 +7,21 @@ body {
 
 }
 
-.span-reset {
+.cursor-pointer {
     cursor: pointer;
 }
 
-.nav-link {
+.nav-link, .nav-link:focus {
     color: white
 }
 
 .nav-link:hover {
     color: gray
 }
+
+/* .router-link-active {
+    font-weight: bold;
+} */
 
 .language-switch {
     filter: invert(100%);
@@ -54,5 +58,5 @@ body {
 
 .word-hide {
     height: 50px;
-    font-size: 1.4em;
+    font-size: 1.8em;
 }
