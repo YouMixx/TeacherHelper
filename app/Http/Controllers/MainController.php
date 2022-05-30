@@ -80,10 +80,17 @@ class MainController extends Controller
         return response()->json([
             'status' => true,
             'books' => $books,
-        ]); 
+        ]);
+    }
 
-        // $books = session('books');
-        // return view('wordbooks', compact('books'));
+    public function saveWordbook($id, Request $request)
+    {
+        $books = session('books');
+        $books[$id]['words']['RUS'] = $request->words['RUS'];
+        $books[$id]['words']['ENG'] = $request->words['ENG'];
+        return response()->json([
+            'status' => true,
+        ]);
     }
 
     public function showBooks($id)
@@ -97,15 +104,7 @@ class MainController extends Controller
             'status' => true,
             'words' => $collection,
         ]); 
-        // return view('translated', compact('collection'));
     }
-
-    // public function showAllWords()
-    // {
-    //     $books = session('books');
-    //     $books = json_encode($books);
-    //     return view('words-list', compact('books'));
-    // }
 
     public function clearBooks()
     {

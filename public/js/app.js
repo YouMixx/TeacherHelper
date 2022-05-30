@@ -5295,6 +5295,73 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      words: null
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/get-wordbook/".concat(this.$route.params.bookId)).then(function (res) {
+      _this.words = res.data.words;
+      console.log(_this.words);
+    });
+  },
+  computed: {},
+  methods: {
+    save: function save() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/save-wordbook/".concat(this.$route.params.bookId), {
+        words: this.words
+      }).then(function (res) {
+        if (res.data.status) {
+          _this2.$toast.success('Вы успешно сохранили словарь');
+        } else {
+          _this2.$toast.error(res.data.message);
+        }
+      })["catch"](function (err) {
+        _this2.$toast.error('Произошла ошибка.');
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/HeaderMenu.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/HeaderMenu.vue?vue&type=script&lang=js& ***!
@@ -5470,7 +5537,6 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('name_book', this.name);
       formData.append('file', this.file);
       axios.post("/load-file", formData, config).then(function (res) {
-        // console.log(res.data.books);
         if (res.data.status) {
           _this.$toast.success('Ваш файл был успешно загружен');
 
@@ -5519,6 +5585,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {};
@@ -5527,6 +5600,27 @@ __webpack_require__.r(__webpack_exports__);
   computed: {},
   methods: {}
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ (() => {
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -5592,7 +5686,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.SwitchLanguage();
     });
     axios.post("/get-wordbook/".concat(this.$route.params.bookId)).then(function (res) {
-      console.log(res.data);
       _this.words = res.data.words;
       _this.word_show = _this.words[_this.lang][_this.count];
     });
@@ -5687,6 +5780,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5752,10 +5853,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5766,7 +5863,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    console.log(this.books);
     axios.post("/get-wordbooks").then(function (res) {
       _this.books = res.data.books;
     });
@@ -5791,10 +5887,10 @@ __webpack_require__.r(__webpack_exports__);
             });
             temp_books[index].words.ENG = words;
           }
-        });
-        return temp_books;
-      } // console.log(this.books[0].words.ENG.length);
+        }); // console.log(temp_books);
 
+        return temp_books;
+      }
 
       return this.books;
     }
@@ -5816,7 +5912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vue_toast_notification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toast-notification */ "./node_modules/vue-toast-notification/dist/index.min.js");
 /* harmony import */ var vue_toast_notification__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_toast_notification__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-toast-notification/dist/theme-sugar.css */ "./node_modules/vue-toast-notification/dist/theme-sugar.css");
@@ -5826,6 +5922,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_WordBooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/WordBooks */ "./resources/js/components/WordBooks.vue");
 /* harmony import */ var _components_LoaderPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/LoaderPage */ "./resources/js/components/LoaderPage.vue");
 /* harmony import */ var _components_TranslatedWords__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/TranslatedWords */ "./resources/js/components/TranslatedWords.vue");
+/* harmony import */ var _components_EditWordBook__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/EditWordBook */ "./resources/js/components/EditWordBook.vue");
+/* harmony import */ var _components_PageNotFound__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/PageNotFound */ "./resources/js/components/PageNotFound.vue");
+
+
 
 
 
@@ -5844,7 +5944,7 @@ Vue.component('words-list', (__webpack_require__(/*! ./components/WordsList.vue 
 Vue.component('word-books', (__webpack_require__(/*! ./components/WordBooks.vue */ "./resources/js/components/WordBooks.vue")["default"])); // Vue.component('mane-page', require('./components/ManePage.vue').default);
 
 Vue.use((vue_toast_notification__WEBPACK_IMPORTED_MODULE_0___default()));
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_10__["default"]);
 var routes = [{
   path: '',
   component: _components_App__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -5868,9 +5968,17 @@ var routes = [{
     path: '/translated/:bookId',
     name: 'TranslatedWords',
     component: _components_TranslatedWords__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }, {
+    path: '/edit-book/:bookId',
+    name: 'EditWordBook',
+    component: _components_EditWordBook__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }, {
+    path: '*',
+    name: 'PageNotFound',
+    component: _components_PageNotFound__WEBPACK_IMPORTED_MODULE_9__["default"]
   }]
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_8__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_10__["default"]({
   routes: routes,
   mode: 'history'
 });
@@ -39735,6 +39843,45 @@ component.options.__file = "resources/js/components/App.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/EditWordBook.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/EditWordBook.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditWordBook.vue?vue&type=template&id=d498d2b0& */ "./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0&");
+/* harmony import */ var _EditWordBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditWordBook.vue?vue&type=script&lang=js& */ "./resources/js/components/EditWordBook.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditWordBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__.render,
+  _EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditWordBook.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/HeaderMenu.vue":
 /*!************************************************!*\
   !*** ./resources/js/components/HeaderMenu.vue ***!
@@ -39848,6 +39995,48 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/ManePage.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PageNotFound.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/PageNotFound.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=template&id=3d2ec509& */ "./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509&");
+/* harmony import */ var _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=script&lang=js& */ "./resources/js/components/PageNotFound.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PageNotFound.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -39985,6 +40174,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/EditWordBook.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/EditWordBook.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWordBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditWordBook.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWordBook_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/HeaderMenu.vue?vue&type=script&lang=js&":
 /*!*************************************************************************!*\
   !*** ./resources/js/components/HeaderMenu.vue?vue&type=script&lang=js& ***!
@@ -40030,6 +40235,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ManePage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ManePage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ManePage.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ManePage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PageNotFound.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/PageNotFound.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PageNotFound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
 
 /***/ }),
 
@@ -40098,6 +40323,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditWordBook_vue_vue_type_template_id_d498d2b0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./EditWordBook.vue?vue&type=template&id=d498d2b0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/HeaderMenu.vue?vue&type=template&id=7b393792&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/HeaderMenu.vue?vue&type=template&id=7b393792& ***!
@@ -40145,6 +40387,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ManePage_vue_vue_type_template_id_791d87e5___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ManePage_vue_vue_type_template_id_791d87e5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ManePage.vue?vue&type=template&id=791d87e5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ManePage.vue?vue&type=template&id=791d87e5&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509& ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_3d2ec509___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PageNotFound.vue?vue&type=template&id=3d2ec509& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509&");
 
 
 /***/ }),
@@ -40228,6 +40487,109 @@ var render = function () {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditWordBook.vue?vue&type=template&id=d498d2b0& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Редактирование словаря:")]),
+    _vm._v(" "),
+    _vm.words != null
+      ? _c(
+          "div",
+          { staticClass: "row gx-2 gy-2" },
+          [
+            _vm._l(_vm.words.ENG, function (word, index) {
+              return _vm._t("default", function () {
+                return [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.words.ENG[index],
+                          expression: "words.ENG[index]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.words.ENG[index] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.words.ENG, index, $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.words.RUS[index],
+                          expression: "words.RUS[index]",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.words.RUS[index] },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.words.RUS, index, $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                ]
+              })
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-success mt-3",
+                on: {
+                  click: function ($event) {
+                    return _vm.save()
+                  },
+                },
+              },
+              [_vm._v("Сохранить")]
+            ),
+          ],
+          2
+        )
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40494,22 +40856,24 @@ var staticRenderFns = [
           _c("strong", [_vm._v("Инструкция по загрузке:")]),
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "mb-1" }, [
-          _vm._v(
-            '1. В верхнем меню переходите на вкладку "Загрузить словарь". Вписываете любое имя словаря и выбираете сам файл.'
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "mb-1" }, [
-          _vm._v(
-            '2. После загрузки файла вас автоматичеки переадресует на страницу с загруженными словарями (вкладка - "Выбрать словарь"). На этой странице вам необходимо выбрать один из загруженных ранее словарей.'
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "mb-1" }, [
-          _vm._v(
-            '3. Выбрав словарь, вы увидите текст на английском языке, а так-же скрытый ниже текст на русском языке. Ниже будет две кнопки для управления - "Показать слово" и "Следующее слово". '
-          ),
+        _c("ol", { staticClass: "mb-0" }, [
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              'В верхнем меню переходите на вкладку "Загрузить словарь". Вписываете любое имя словаря и выбираете сам файл.'
+            ),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              'После загрузки файла вас автоматичеки переадресует на страницу с загруженными словарями (вкладка - "Выбрать словарь"). На этой странице вам необходимо выбрать один из загруженных ранее словарей.'
+            ),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              'Выбрав словарь, вы увидите текст на английском языке, а так-же скрытый ниже текст на русском языке. Ниже будет две кнопки для управления - "Показать слово" и "Следующее слово".'
+            ),
+          ]),
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "mt-2 mb-0" }, [
@@ -40530,6 +40894,12 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("p", { staticClass: "mb-1" }, [
           _vm._v(
+            "Для голосового воспроизведения слова, нажмите на соответствующую кнопку."
+          ),
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "mb-1" }, [
+          _vm._v(
             "В любой момент вы можете загрузить новый словарь или выбрать другой из уже загруженных, используя навигацию сверху."
           ),
         ]),
@@ -40538,21 +40908,73 @@ var staticRenderFns = [
           _c("strong", [_vm._v("Важные аспекты:")]),
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "mb-1" }, [
-          _vm._v(
-            "1. Файлы необходимо загружать формата «CSV UTF-8 (разделитель - запятая)»"
-          ),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "mb-1" }, [
-          _vm._v(
-            "2. На сайте нет авторизации (исходя из ТЗ). Ваши словари сохраняются в сессии (время сессии - сутки)."
-          ),
+        _c("ul", [
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              "Файлы необходимо загружать формата «CSV UTF-8 (разделитель - запятая)»"
+            ),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              "На сайте нет авторизации (исходя из ТЗ). Ваши словари сохраняются в сессии."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v("Весь сайт сделан по принципу SPA."),
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "mb-1" }, [
+            _vm._v(
+              "На странице с выбором словаря, у каждого словаря есть иконка карандашика. Кликнув по ней открывается возможность онлайн-редактирования."
+            ),
+          ]),
         ]),
       ]),
     ])
   },
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PageNotFound.vue?vue&type=template&id=3d2ec509& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", { staticClass: "not-found" }, [
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("h1", [_vm._v("404")]),
+        _vm._v(" "),
+        _c("h2", [_vm._v("Страница не найдена")]),
+        _vm._v(" "),
+        _c("router-link", { attrs: { to: { name: "ManePage" } } }, [
+          _c("div", { staticClass: "btn" }, [_vm._v("На главную")]),
+        ]),
+      ],
+      1
+    ),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40703,17 +41125,17 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v("Ваши словари:")]),
+    _vm._v(" "),
     _vm.books != null
       ? _c(
           "div",
           { staticClass: "row gx-2 gy-2" },
           [
-            _c("h1", [_vm._v("Ваши словари:")]),
-            _vm._v(" "),
             _vm._l(_vm.books, function (book, index) {
               return _c(
                 "div",
-                { key: index, staticClass: "col-4" },
+                { key: index, staticClass: "col-md-6 col-xl-4 col-12" },
                 [
                   _c(
                     "router-link",
@@ -40731,9 +41153,29 @@ var render = function () {
                         "div",
                         {
                           staticClass:
-                            "shadow rounded text-reset p-2 px-3 d-flex flex-column",
+                            "shadow rounded text-reset p-2 px-3 d-flex flex-column position-relative",
                         },
                         [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass:
+                                "text-decoration-none text-reset close",
+                              attrs: {
+                                to: {
+                                  name: "EditWordBook",
+                                  params: { bookId: index },
+                                },
+                              },
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-pencil",
+                                attrs: { "aria-hidden": "true" },
+                              }),
+                            ]
+                          ),
+                          _vm._v(" "),
                           _c("h4", { staticClass: "m-0" }, [
                             _vm._v(_vm._s(book.name)),
                           ]),
@@ -40747,7 +41189,8 @@ var render = function () {
                               "Дата создания: " + _vm._s(book.date_created)
                             ),
                           ]),
-                        ]
+                        ],
+                        1
                       ),
                     ]
                   ),
@@ -40756,15 +41199,16 @@ var render = function () {
               )
             }),
             _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass:
-                  "text-decoration-none text-reset text-center mt-4 cursor-pointer",
-                on: { click: _vm.ClearBooks },
-              },
-              [_vm._v("Удалить все словари")]
-            ),
+            _c("div", { staticClass: "clear-books text-center mt-4" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "cursor-pointer",
+                  on: { click: _vm.ClearBooks },
+                },
+                [_vm._v("Удалить все словари")]
+              ),
+            ]),
           ],
           2
         )
@@ -40834,7 +41278,7 @@ var render = function () {
                   _vm._l(book["words"]["RUS"].length, function (i) {
                     return book["words"]["RUS"][i - 1] &&
                       book["words"]["ENG"][i - 1]
-                      ? _c("div", { staticClass: "col-4" }, [
+                      ? _c("div", { staticClass: "col-md-6 col-xl-4 col-12" }, [
                           _c(
                             "div",
                             {
@@ -40854,15 +41298,6 @@ var render = function () {
                         ])
                       : _vm._e()
                   }),
-                  _vm._v(" "),
-                  book["words"]["ENG"].length == 0 ||
-                  book["words"]["RUS"].length == 0
-                    ? _c("div", { staticClass: "col-4" }, [
-                        _vm._v(
-                          "\n                В этом словаре ничего не найдено..\n            "
-                        ),
-                      ])
-                    : _vm._e(),
                 ],
                 2
               )

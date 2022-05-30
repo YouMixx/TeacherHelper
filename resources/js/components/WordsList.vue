@@ -7,14 +7,10 @@
                 <h3>{{ book['name'] }}</h3>
                 <div v-for="i in book['words']['RUS'].length"
                     v-if="book['words']['RUS'][i-1] && book['words']['ENG'][i-1]"
-                    class="col-4">
+                    class="col-md-6 col-xl-4 col-12">
                     <div class="shadow rounded text-reset p-2 px-3 mb-3 d-flex flex-column">
                         {{ book['words']['RUS'][i-1] }} - {{ book['words']['ENG'][i-1] }}
                     </div>
-                </div>
-                <div v-if="book['words']['ENG'].length == 0 || book['words']['RUS'].length == 0"
-                    class="col-4">
-                    В этом словаре ничего не найдено..
                 </div>
             </div>
         </div>
@@ -31,7 +27,6 @@ export default {
         };
     },
     mounted() {
-        console.log(this.books);
         axios.post(`/get-wordbooks`)
             .then((res) => {
                 this.books = res.data.books;
@@ -55,9 +50,9 @@ export default {
                         temp_books[index].words.ENG = words;
                     }
                 });
+                // console.log(temp_books);
                 return temp_books;
             }
-            // console.log(this.books[0].words.ENG.length);
             return this.books;
         }, 
     },

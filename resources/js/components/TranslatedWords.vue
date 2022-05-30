@@ -49,7 +49,6 @@ export default {
         });
         axios.post(`/get-wordbook/${this.$route.params.bookId}`)
             .then((res) => {
-                console.log(res.data);
                 this.words = res.data.words;
                 this.word_show = this.words[this.lang][this.count];
             });

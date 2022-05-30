@@ -8,6 +8,8 @@ import WordsList from './components/WordsList'
 import WordBooks from './components/WordBooks'
 import LoaderPage from './components/LoaderPage'
 import TranslatedWords from './components/TranslatedWords'
+import EditWordBook from './components/EditWordBook'
+import PageNotFound from './components/PageNotFound'
 
 require('./bootstrap');
 
@@ -50,6 +52,16 @@ const routes = [
                 path: '/translated/:bookId',
                 name: 'TranslatedWords',
                 component: TranslatedWords,
+            },
+            {
+                path: '/edit-book/:bookId',
+                name: 'EditWordBook',
+                component: EditWordBook,
+            },
+            {
+                path: '*',
+                name: 'PageNotFound',
+                component: PageNotFound,
             },
         ]
     }

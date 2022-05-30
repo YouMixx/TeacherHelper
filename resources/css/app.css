@@ -60,3 +60,46 @@ body {
     height: 50px;
     font-size: 1.8em;
 }
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+}
+
+.close i {
+    vertical-align: middle;
+}
+
+/* 404 */
+
+.not-found {
+    text-align: center;
+}
+
+.not-found h1 {
+    font-size: 13em;
+    margin: 0.4em 0 0;
+    line-height: 1;
+    font-family: "Nunito";
+    font-weight: bold;
+    color: #919095;
+}
+
+.not-found h2 {
+    font-size: 2em;
+    font-family: "Nunito";
+    font-weight: bold;
+    color: #919095;
+}
+
+.not-found .btn {
+    border: 1px solid #919095;
+    font-size: 16px;
+    line-height: 36px;
+    padding: 6px 60px;
+    margin-top: 10px;
+}

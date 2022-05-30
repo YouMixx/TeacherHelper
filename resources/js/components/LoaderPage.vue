@@ -84,7 +84,6 @@ export default {
 
             axios.post(`/load-file`, formData, config)
                 .then((res) => {
-                    // console.log(res.data.books);
                     if(res.data.status) {
                         this.$toast.success('Ваш файл был успешно загружен');
                         this.$router.push('/wordbooks');
